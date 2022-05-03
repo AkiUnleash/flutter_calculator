@@ -68,24 +68,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    margin: const EdgeInsets.only(bottom: 24),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(12),
-                      child: Text(
-                        '0',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 32,
-                          color: Colors.white,
-                        ),
+                      margin: const EdgeInsets.only(bottom: 24),
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.black54,
+                        borderRadius: BorderRadius.circular(5),
                       ),
-                    )),
+                      child: const Padding(
+                        padding: EdgeInsets.all(12),
+                        child: Text(
+                          '0',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 32,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )),
                   GridView.count(
                       shrinkWrap: true,
                       crossAxisCount: 4,
@@ -93,40 +93,40 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisSpacing: 24,
                       padding: const EdgeInsets.symmetric(vertical: 24),
                       children: const [
-                        OriginalButton(text: "C"),
-                        OriginalButton(text: "AC"),
-                        OriginalButton(text: "<-"),
-                        OriginalButton(text: "%"),
-                        OriginalButton(text: "7"),
-                        OriginalButton(text: "8"),
-                        OriginalButton(text: "9"),
-                        OriginalButton(text: "÷"),
-                        OriginalButton(text: "4"),
-                        OriginalButton(text: "5"),
-                        OriginalButton(text: "6"),
-                        OriginalButton(text: "-"),
-                        OriginalButton(text: "1"),
-                        OriginalButton(text: "2"),
-                        OriginalButton(text: "3"),
-                        OriginalButton(text: "×"),
-                        OriginalButton(text: "0"),
-                        OriginalButton(text: "."),
-                        OriginalButton(text: "="),
-                        OriginalButton(text: "+"),
+                        OriginalButton(text: "C", color: Colors.orange),
+                        OriginalButton(text: "AC", color: Colors.red),
+                        OriginalButton(text: "<-", color: Colors.black12),
+                        OriginalButton(text: "%", color: Colors.black12),
+                        OriginalButton(text: "7", color: Colors.black12),
+                        OriginalButton(text: "8", color: Colors.black12),
+                        OriginalButton(text: "9", color: Colors.black12),
+                        OriginalButton(text: "÷", color: Colors.black12),
+                        OriginalButton(text: "4", color: Colors.black12),
+                        OriginalButton(text: "5", color: Colors.black12),
+                        OriginalButton(text: "6", color: Colors.black12),
+                        OriginalButton(text: "-", color: Colors.black12),
+                        OriginalButton(text: "1", color: Colors.black12),
+                        OriginalButton(text: "2", color: Colors.black12),
+                        OriginalButton(text: "3", color: Colors.black12),
+                        OriginalButton(text: "×", color: Colors.black12),
+                        OriginalButton(text: "0", color: Colors.black12),
+                        OriginalButton(text: ".", color: Colors.black12),
+                        OriginalButton(text: "=", color: Colors.black12),
+                        OriginalButton(text: "+", color: Colors.black12),
                       ])
                 ],
               ),
-            )
-          )
-        );
+            )));
   }
 }
 
 class OriginalButton extends StatelessWidget {
   final String text;
+  final Color color;
 
   const OriginalButton({
     Key? key,
+    required this.color,
     required this.text,
   }) : super(key: key);
 
@@ -135,15 +135,15 @@ class OriginalButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-        primary: Colors.black12, //ボタンの背景色
+        primary: color, //ボタンの背景色
       ),
       child: Text(
         text,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-            color: Colors.white,
-          ),
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 24,
+          color: Colors.white,
+        ),
       ),
     );
   }
