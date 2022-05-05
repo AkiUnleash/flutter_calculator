@@ -5,12 +5,12 @@ class Button extends StatelessWidget {
   final Color color;
   final void Function() onPressed;
 
-  const Button({
-    Key? key,
-    required this.color,
-    required this.text,
-    required this.onPressed
-  }) : super(key: key);
+  const Button(
+      {Key? key,
+      required this.color,
+      required this.text,
+      required this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

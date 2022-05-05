@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_calculator/components/button.dart';
+import 'package:flutter_calculator/screen/setting.dart';
 import 'dart:math';
 
 class HomeScreen extends StatefulWidget {
@@ -13,6 +14,24 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final formatter = NumberFormat("#,###.#########");
+
+  // Color
+  Color _colorButton = Colors.black12;
+  Color _colorBackGround1 = const Color(0xFF616161).withOpacity(0.8);
+  Color _colorBackGround2 = const Color(0xFF212121);
+  Color _colorTop = const Color(0xFF1A1A1A);
+
+  void _colorChange(Color colorButton, Color colorBackGround1,
+      Color colorBackGround2, Color colorTop) {
+    setState(() {
+      _colorButton = colorButton;
+      _colorBackGround1 = colorBackGround1;
+      _colorBackGround2 = colorBackGround2;
+      _colorTop = colorTop;
+    });
+  }
+
+  // Calculation
   double _totalValue = 0;
   double _displayNumber = 0;
   double _backNumber = 0;
@@ -124,7 +143,20 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
-          backgroundColor: Colors.black87,
+          backgroundColor: _colorTop,
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SettingScreen(
+                              onTap: _colorChange,
+                            )));
+              },
+              icon: const Icon(Icons.settings),
+            )
+          ],
         ),
         body: Container(
             height: double.infinity,
@@ -133,10 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
               gradient: LinearGradient(
                 begin: FractionalOffset.topLeft,
                 end: FractionalOffset.bottomRight,
-                colors: [
-                  const Color.fromARGB(255, 106, 106, 106).withOpacity(0.8),
-                  const Color.fromARGB(255, 0, 0, 0).withOpacity(1),
-                ],
+                colors: [_colorBackGround1, _colorBackGround2],
                 stops: const [
                   0.0,
                   1.0,
@@ -184,75 +213,75 @@ class _HomeScreenState extends State<HomeScreen> {
                             onPressed: () => _allClearButton()),
                         Button(
                             text: "<-",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _backButton()),
                         Button(
                             text: "%",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _percentButton()),
                         Button(
                             text: "7",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _numberButton(7)),
                         Button(
                             text: "8",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _numberButton(8)),
                         Button(
                             text: "9",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _numberButton(9)),
                         Button(
                             text: "÷",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _operatorButton(4)),
                         Button(
                             text: "4",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _numberButton(4)),
                         Button(
                             text: "5",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _numberButton(5)),
                         Button(
                             text: "6",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _numberButton(6)),
                         Button(
                             text: "-",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _operatorButton(2)),
                         Button(
                             text: "1",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _numberButton(1)),
                         Button(
                             text: "2",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _numberButton(2)),
                         Button(
                             text: "3",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _numberButton(3)),
                         Button(
                             text: "×",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _operatorButton(3)),
                         Button(
                             text: "0",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _numberButton(0)),
                         Button(
                             text: ".",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _pointButton()),
                         Button(
                             text: "=",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _resultButton()),
                         Button(
                             text: "+",
-                            color: Colors.black12,
+                            color: _colorButton,
                             onPressed: () => _operatorButton(1)),
                       ])
                 ],
