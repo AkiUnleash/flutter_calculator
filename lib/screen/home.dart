@@ -43,6 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void _numberButton(double number) {
     setState(() {
       if (_isOperator == false) {
+        if (_displayNumber.toString().length >= 15) {
+          return;
+        }
         if (_pointInt == 0) {
           _displayNumber = (_displayNumber * 10) + number;
           _backNumber = _displayNumber;
@@ -205,6 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           formatter.format(_displayNumber),
                           textAlign: TextAlign.right,
                           style: const TextStyle(
+                            fontFamily: 'RadioCanada',
                             fontWeight: FontWeight.bold,
                             fontSize: 32,
                             color: Colors.white,

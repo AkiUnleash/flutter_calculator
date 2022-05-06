@@ -22,6 +22,7 @@ class Button extends StatelessWidget {
       child: Text(
         text,
         style: const TextStyle(
+          fontFamily: 'RadioCanada',
           fontWeight: FontWeight.bold,
           fontSize: 24,
           color: Colors.white,
