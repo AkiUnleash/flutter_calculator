@@ -63,6 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
   // Processing when a Arithmetic operator button is pressed.
   // + = 1 , - = 2 , * = 3 , / = 4
   void _operatorButton(int operator) {
+    print(_isOperator);
+    if (_totalValue != 0 && _isOperator == false) {
+      _resultButton();
+    }
     _operator = operator;
     _isOperator = true;
   }
@@ -79,6 +83,8 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _displayNumber = (_displayNumber / 10).floorToDouble();
       _backNumber = _displayNumber;
+      _isOperator = false;
+      _operator = 0;
     });
   }
 
@@ -97,9 +103,12 @@ class _HomeScreenState extends State<HomeScreen> {
       case 4:
         _totalValue = _totalValue / _backNumber;
         break;
+      case 0:
+        return;
     }
     setState(() {
       _displayNumber = _totalValue;
+      _isOperator = true;
     });
   }
 
@@ -120,6 +129,12 @@ class _HomeScreenState extends State<HomeScreen> {
   // Processing when a clear button is pressed.
   void _clearButton() {
     setState(() {
+      if (_displayNumber == 0 &&
+          _backNumber == 0 &&
+          _operator == 0 &&
+          _pointInt == 0) {
+        _totalValue = 0;
+      }
       _displayNumber = 0;
       _backNumber = 0;
       _operator = 0;
